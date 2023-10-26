@@ -1,3 +1,7 @@
+
+#в файле нужно оставить интерфейс и связать логику
+
+
 from tkinter import *
 from  random import choice
 import time
@@ -11,7 +15,7 @@ mines = xBtn * yBtn * 10 // 64                  # Количество мин
 imgMark = '\u2661'; imgMine = '\u2665'      # Символ маркера и мины
 playArea = []; nMoves = 0; mrk=0                # Игровое поле, счётчик ходов и маркеров
 tk = Tk()
-tk.title('Achtung, Minen!')
+tk.title('Игра Сапер')
 tk.geometry(str(44*xBtn)+'x'+str(44*yBtn+10))
 
 def play(n):                                    # n - номер нажатой кнопки
@@ -49,7 +53,7 @@ def play(n):                                    # n - номер нажатой 
                 playArea[i] = k
     if btn[n].cget('text') == imgMark:                          # Если поле было промаркировано
         mrk -= 1
-        tk.title('Achtung, '+str(mines-mrk)+' Minen!')
+        tk.title('Осторожно! Вокруг '+str(mines-mrk)+' Мин(ы)!!!!')
     btn[n].config(text=playArea[n], state=DISABLED, bg='white') # Отображаем игровую ситуацию
     if playArea[n] == 0:                                        # Пустое поле без соседей
         btn[n].config(text=' ', bg='#ccb')
@@ -58,9 +62,9 @@ def play(n):                                    # n - номер нажатой 
         if nMoves <= (xBtn*yBtn - mines) or mines >= mrk:       # Если игрок ещё не выиграл, то проиграл
             nMoves = 32000                                      # Если проиграл, то уже не выиграет
             chainReaction(0)                                    # Цепная реакция
-            tk.title('Your game is over.')
+            tk.title('Вы проиграли :(')
     if nMoves == (xBtn*yBtn - mines) and mines == mrk:          # Если все клетки открыты и мины помечены
-        tk.title('You win! '+str(int(time.time() - playTime))+' сек')
+        tk.title('Поздравляю! Вы выйграли за '+str(int(time.time() - playTime))+' сек')
         winner(0)
 
 def chainReaction(j):                               # Цепная реакция
@@ -93,9 +97,9 @@ def marker(n):                                      # помечаем то, г�
         else:
             btn[n].config(text=imgMark, fg='blue')
             mrk += 1
-        tk.title('Achtung, '+str(mines-mrk)+' Minen!')
+        tk.title('Осторожно! Вокруг '+str(mines-mrk)+'Мин!!!!')
     if nMoves == (xBtn*yBtn - mines) and mines == mrk:          # Если все клетки открыты и мины помечены
-        tk.title('You win! '+str(int(time.time() - playTime))+' сек')
+        tk.title('Поздравляю! Вы выйграли за '+str(int(time.time() - playTime))+' сек')
         winner(0)
 
 def newGame():
@@ -111,7 +115,7 @@ def newGame():
             frm[i].destroy()
         frm.clear()
     playground()
-    tk.title('Achtung, '+str(mines-mrk)+' Minen!')
+    tk.title('Осторожно! Вокруг '+str(mines-mrk)+' Мин(ы)!!!!')
 
 def set5x5():
     global xBtn, yBtn
