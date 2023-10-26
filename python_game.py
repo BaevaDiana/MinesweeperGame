@@ -1,17 +1,3 @@
-# Mines
-# This is my version of the game, known as mines or Minesweeper.
-#
-# Created on June 25, 2021.
-# Author: Diorditsa A.
-# I thank Sergey Polozkov for checking the code for hidden errors?
-#
-# mines.py is distributed in the hope that it will be useful, but
-# WITHOUT WARRANTY OF ANY KIND; not even an implied warranty
-# MARKETABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See. See the GNU General Public License for more information.
-# You can get a copy of the GNU General Public License
-# by link http://www.gnu.org/licenses/
-
 from tkinter import *
 from  random import choice
 import time
@@ -20,7 +6,9 @@ frm = []; btn = []                              # Списки с фреймам
 xBtn = 16; yBtn = 16                            # Размеры поля (количество кнопок)
 playTime = 0                                    # Время игры
 mines = xBtn * yBtn * 10 // 64                  # Количество мин
-imgMark = '\u2661'; imgMine = '\u2665'          # Символ маркера и мины
+
+
+imgMark = '\u2661'; imgMine = '\u2665'      # Символ маркера и мины
 playArea = []; nMoves = 0; mrk=0                # Игровое поле, счётчик ходов и маркеров
 tk = Tk()
 tk.title('Achtung, Minen!')
