@@ -169,7 +169,9 @@ grid_reduces(AboveRow, ThisRow, BelowRow, [NextRow | Tail]) :-
     row_reduces(ThisRow, Neighbours),
     grid_reduces(ThisRow, BelowRow, NextRow, Tail).
 
-/* Этот предикат используется для проверки, можно ли уменьшить все числа на игровом поле до 0.
+
+/* Этот предикат используется для проверки, можно ли уменьшить все числа на игровом поле до 0, в частности для проверки игрового поля.
+
 Он вызывает предикат grid_reduces/1, который проверяет, можно ли уменьшить все числа на игровом поле до 0.*/
 valid_board(Board) :- grid_reduces(Board).
 
@@ -177,11 +179,13 @@ valid_board(Board) :- grid_reduces(Board).
 /* Предикат print_board/1 используется для печати игрового поля. Он принимает список списков и печатает каждую строку, используя предикат print_row/1.
 Предикат print_row/1 используется для печати строки игрового поля. Он принимает список и печатает каждый элемент списка, разделяя их пробелами. */
 
-print_board([]).
-print_board([Row | Rows]) :- print_row(Row), print_board(Rows).
 
-print_row([]) :- nl.
-print_row([Tile | Tiles]) :- write(Tile), write(" "), print_row(Tiles).
+%% print_board([]).
+%% print_board([Row | Rows]) :- print_row(Row), print_board(Rows).
+
+%% print_row([]) :- nl.
+%% print_row([Tile | Tiles]) :- write(Tile), write(" "), print_row(Tiles).
+
 
 /* Предикат minesweeper/1 используется для проверки, можно ли уменьшить все числа на игровом поле до 0
 (если все числа на игровом поле могут быть уменьшены до 0, то это означает, что все клетки, кроме тех, которые содержат мины, были открыты.)
