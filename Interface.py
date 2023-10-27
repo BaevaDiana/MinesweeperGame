@@ -107,13 +107,15 @@ def newGame():  # Начать новую игру
 
 def set5x5():  # Установить размер поля 5x5
     global xBtn, yBtn,mines,input_field
+    input_field = [[0 for _ in range(5)] for _ in range(5)]
+
     xBtn = 5
     yBtn = 5
-    file_of_examples = open('prolog_minesweeper/query5.pl', 'r')
+    file_of_examples = open('prolog_minesweeper/query_5.pl', 'r')
     examples = file_of_examples.read().split('.')
     random_example = random.randint(0, len(examples) - 1)
     prolog = Prolog()
-    prolog.consult("prolog/minesweeper.pl")
+    prolog.consult("prolog_minesweeper/minesweeper.pl")
 
     for solution in prolog.query(examples[random_example]):
         input_field = solution["X"]
@@ -129,7 +131,7 @@ def set8x8():  # Установить размер поля 8x8
     global xBtn, yBtn, mines, input_field
     xBtn = 8
     yBtn = 8
-    file_of_examples = open('prolog_minesweeper/query8.pl', 'r')
+    file_of_examples = open('prolog_minesweeper/query_8.pl', 'r')
     examples = file_of_examples.read().split('.')
     random_example = random.randint(0, len(examples) - 1)
     prolog = Prolog()
@@ -149,7 +151,7 @@ def set16x16():  # Установить размер поля 16x16
     global xBtn, yBtn, mines, input_field
     xBtn = 16
     yBtn = 16
-    file_of_examples = open('prolog_minesweeper/query16.pl', 'r')
+    file_of_examples = open('prolog_minesweeper/query_16.pl', 'r')
     examples = file_of_examples.read().split('.')
     random_example = random.randint(0, len(examples) - 1)
     prolog = Prolog()
